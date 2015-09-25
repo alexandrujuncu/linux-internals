@@ -1,0 +1,15 @@
+fd.c is a simple C program that demonstrate the concepts of file descriptors
+and an open file within a process.
+
+To compile the program, run:
+	make fd
+
+To run the program, run:
+	./fd
+
+You can use the BREAK to make the process wait for a key stroke.
+While running the program, monitor the contents of the text file "rick.txt" and
+check the contents of /proc/$PID/fd.
+
+You can use the watch + cat commands on the file to monitor the contents.
+Be sure to delete the file after each run.

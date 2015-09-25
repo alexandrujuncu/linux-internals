@@ -1,0 +1,48 @@
+This guide will show the concept of a file from the kernel side
+and what it the difference between a 'file' in the kernel (VFS),
+a file descriptor and a file on disk (inode).
+
+You will need to be root throughout this task (# will indicate prompt).
+Start by seeing where the executable for bash is:
+
+	# which bash
+	/bin/bash
+
+Let's get an md5sum on the file (value will differ from example):
+
+	# md5sum /bin/bash
+	b2fdb3fad54de72866315e085a9c346e  /bin/bash
+
+And let's delete the file:
+
+	# rm /bin/bash
+	rm: remove regular file ‘/bin/bash’? y
+
+Try to run bash:
+
+	# bash
+	bash: bash: command not found...
+
+ZOMG!
+How can we bring it back?
+Wait... but my bash is still working ok. I am using it now.
+
+	# cd /proc/$$/
+	# ls -la exe
+	lrwxrwxrwx. 1 root root 0 Sep 25 14:48 exe -> /usr/bin/bash (deleted)
+
+Is the file still there?
+
+	# cat exe> /bin/bash_rescued
+	# md5sum /bin/bash_rescued
+	b2fdb3fad54de72866315e085a9c346e  /bin/bash_rescued
+
+Look correct.
+
+	# mv /bin/bash_rescued /bin/bash
+	]# bash
+	bash: /bin/bash: Permission denied
+
+Fix permissions and we're safe.
+
+	# chmod +x /bin/bash

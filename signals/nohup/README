@@ -1,0 +1,29 @@
+phone.c is a simple C program used for nohup case study.
+
+To compile the program, run:
+	make phone
+
+To start the program, run:
+	./phone
+
+
+In initial state, all signals are treated by default handlers.
+
+Task 1
+
+Compile the program and run it. Observe the PID.
+Use the *kill* command to send the HUP signal (SIGHUP) to the phone process.
+
+
+Task 2
+
+Modify the code and activate the SIGHUP handler function (see TODO).
+Recompile and run the phone program.
+Send another SIGHUP to the process.
+
+
+Task 3
+
+Run the phone program again with the *nohup* command.
+Use ps to get the current PID of the process.
+Send SIHGUP to the process.

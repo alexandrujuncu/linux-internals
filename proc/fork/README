@@ -1,0 +1,30 @@
+fork.c is a simple C program used for show how processes are created, how
+executables are ran, and how environment variables are transmitted.
+
+To compile the program, run:
+	make fork
+
+To start the program, run:
+	./fork
+
+
+In the initial form, the first process will fork a child process and both will
+sleep until stopped.
+
+
+Task 1
+
+Compile the program and run it. Observe the PIDs of the two processes.
+
+
+Task 2
+
+See TODO 1. Toggle the #if to make the child process execute a binary (bash).
+In the newly bash shell, observe its PID (run "echo $$") and see the process
+tree.
+
+
+Task 3
+
+See TODO 2. Toggle the #if to set an environment variable in the parent. After
+fork-ing and exec-ing, check the value of the variable in the bash process.

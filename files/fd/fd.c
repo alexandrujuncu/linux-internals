@@ -33,9 +33,10 @@ int write_buffer(int fd, const char* buffer)
 				to_write -= ret;
 				written += ret;
 			}
-			else
+			else {
 				printf("Error writing buffer\n");
 				return -1;
+			}
 		}
 		else
 			break;

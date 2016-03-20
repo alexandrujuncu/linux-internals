@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <wait.h>
 
 int main(void)
 {
@@ -26,7 +27,7 @@ int main(void)
 		/* Code ran by the child. */
 		printf("I am a baby process and my pid is %d \n.", getpid());
 
-		/* TODO 1: Togle this #if to also call exec() */
+		/* TODO 1: Toggle this #if to also call exec() */
 		#if 0
 		execvp("bash", NULL);
 		#endif
@@ -36,12 +37,19 @@ int main(void)
 		printf("I am a proud parent of process %d. I still have the pid %d \n.", pid, getpid());
 	}
 
-	/* Core ran by both processes. */
+	/* Code ran by both processes. */
 	printf("Press CTRL+C to stop us.\n");
 
 	while(1) {
 		printf("%d: ZZZzzz\n", getpid());
 		sleep(5);
+	}
+
+	/* The parent process should wait for the child. */
+	if (pid !=0) {
+		int status;
+		wait(&status);
+		printf("Child %d exited with status %d:\n", pid, status);
 	}
 
 	return 0;

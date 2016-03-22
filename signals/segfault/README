@@ -1,0 +1,18 @@
+sehfault.c is an example of implementing a signal handler.
+I catches SEGV signals.
+
+To compile the program, run:
+	make segfault
+
+To start the program, run:
+	./segfault
+
+
+In initial state, the signal handler is the default system one.
+It just crashes the process (coredump optional).
+
+Task
+
+
+Modify the code and activate the SIGSEGV handler function (see TODO).
+Recompile and run the program again.

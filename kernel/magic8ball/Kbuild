@@ -1,0 +1,3 @@
+#use this flag to enable debugging
+#EXTRA_CFLAGS += -DDEBUG
+obj-m        = 8ball.o
